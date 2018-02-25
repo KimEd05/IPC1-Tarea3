@@ -24,7 +24,6 @@ public class Tarea3_201700507 {
         boolean salida = true;
         
         do {
-        System.out.println("");
         System.out.println("[IPC1]Tarea3_201700507");
         System.out.println("");
         System.out.println("1. Usuarios");
@@ -82,6 +81,7 @@ public class Tarea3_201700507 {
                     
                 case 2: 
                         boolean contador = true;
+                        String i = null;
                         do {
                         System.out.println("1. Ingresar Número");
                         System.out.println("2. Mostrar Número de Dígitos");
@@ -89,6 +89,23 @@ public class Tarea3_201700507 {
                         
                         Scanner teclado2 = new Scanner (System.in);
                         int menucontador = teclado2.nextInt();
+                        
+                        switch (menucontador){
+                            case 1: System.out.println("Ingrese un número entero"); 
+                                    Scanner valorTeclado = new Scanner (System.in);
+                                    i = valorTeclado.nextLine();
+                                    break;
+                            case 2: if (Integer.parseInt(i) <= 100000){
+                                    System.out.println(i.length());
+                                    }
+                                else {System.out.println("El número no se encuentra dentro del rango establecido.");}
+                                    
+                                    break;
+                            case 4: contador = false;
+                                    break;
+                            default: System.out.println("Ingrese un número dentro del listado");
+                                    break;
+                        }
                         
                         } while (contador);
                         
@@ -110,7 +127,6 @@ public class Tarea3_201700507 {
         }
         
         while (salida);
-
     }
     
     
@@ -143,7 +159,7 @@ public class Tarea3_201700507 {
         if(!existe)
             listadoUsuario[posicion] = usuario1;
         else
-            System.out.println("El usuario ingresado ya existe. Ingrese un nuevo usuario.");
+            System.out.println("El usuario ingresado ya existe, ingrese un nuevo usuario.");
         
         } while(existe);      
     }
