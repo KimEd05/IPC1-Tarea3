@@ -50,15 +50,12 @@ public class Tarea3_201700507 {
                        
                         switch (menuusuario) {
                             case 1:
-                                
-                                
-                                for (int i = 0; i < listausuario.length; i++) {
+                                    for (int i = 0; i < listausuario.length; i++) {
                                     Tarea3_201700507.ingresarUsuario(listausuario, i);
                                 }
                                     break;
                                                        
                             case 2: 
-                                    //int posicionFinal = listausuario.length;
                                     for (int i = listausuario.length -1; i >= 0; i--){
                                         System.out.println((i + 1)  + ". " +listausuario[i]);
                             }
@@ -98,26 +95,84 @@ public class Tarea3_201700507 {
                             case 2: if (Integer.parseInt(i) <= 100000){
                                     System.out.println(i.length());
                                     }
-                                else {System.out.println("El número no se encuentra dentro del rango establecido.");}
-                                    
+                                    else {System.out.println("El número no se encuentra dentro del rango establecido.");}
                                     break;
                             case 4: contador = false;
                                     break;
                             default: System.out.println("Ingrese un número dentro del listado");
                                     break;
                         }
-                        
                         } while (contador);
-                        
                     break;
                     
-                case 3: System.out.println("Menú tres");
+                case 3: 
+                        boolean ordenar = true;
+                        int [] listaNumeros = new int [3];
+                        do {
+                        System.out.println("1. Ingresar Números");
+                        System.out.println("2. Mostrar Ordenados");
+                        System.out.println("4. Menú Principal");
+                        
+                        Scanner teclado3 = new Scanner (System.in);
+                        int menuordenar = teclado3.nextInt();
+                        
+                        switch (menuordenar){
+                            case 1: 
+                                    for (int j = 0; j < listaNumeros.length; j++) {
+                                    Tarea3_201700507.ingresarNumeros(listaNumeros, j);
+                            }
+                                    break;
+                            case 2: 
+                                    break;
+                            case 4: ordenar = false;
+                                    break;
+                            default: System.out.println("Ingrese un número dentro del listado");
+                                    break;
+                        }
+                        } while (ordenar);
                     break;
-                case 4: System.out.println("Menu calcular");
+            
+
+                case 4: 
+                        boolean prom = true;
+                        int listaNotas [][] = new int [6][6];
+                        int fila;
+                        int columna;
+                        do {
+                        System.out.println("1. Ingresar Notas");
+                        System.out.println("2. Mostrar Resumen de Notas");
+                        System.out.println("4. Menú Principal");
+                        
+                        Scanner teclado4 = new Scanner (System.in);
+                        int menuprom = teclado4.nextInt();
+                        
+                        switch (menuprom){
+                            case 1: 
+                                    for (fila = 0; fila < listaNotas.length; fila++) {
+                                    Tarea3_201700507.ingresarNotas(listaNotas, fila);
+                                    
+                                }
+                                    
+                                    break;
+                            case 2: for(fila = 0; fila<listaNotas.length; fila++){
+                                        for(columna = 0; columna<listaNotas.length; columna++){
+                                            System.out.print("\t"+listaNotas[fila][columna]+" ");
+                                        }
+                                        System.out.println("");
+                                    }
+                                    break;
+                            case 4: prom = false;
+                                    break;
+                            default: System.out.println("Ingrese un número dentro del listado");
+                                    break;
+                        }
+                        } while (prom);
                     break;
-                case 5: System.out.println("Saliendo");
+                    
+                case 5: System.out.println("El programa ha finalizado.");
                     salida = false;
                     break;
+                    
                 default: System.out.println("Ingrese un número dentro del listado");
                     break;
             }
@@ -164,5 +219,51 @@ public class Tarea3_201700507 {
         } while(existe);      
     }
     
-    
-}
+    /**
+     *
+     * @param listadoNumeros
+     * @param posicion
+     */
+    public static void ingresarNumeros (int [] listadoNumeros, int posicion){
+        
+        System.out.println("Ingresar número " + (posicion + 1));
+        Scanner numero = new Scanner (System.in);
+        String numeroAsignado = numero.nextLine();
+        listadoNumeros[posicion] = Integer.parseInt(numeroAsignado);
+    }
+ 
+    /**
+     *
+     * @param listadoNotas
+     * @param fila
+     * @param columna
+     */
+    public static void ingresarNotas (int [][] listadoNotas, int fila){
+        
+        System.out.println("Ingresar notas de alumno " + (fila+1));
+        Scanner num1 = new Scanner (System.in);
+        String nota1 = num1.nextLine();
+        Scanner num2 = new Scanner (System.in);
+        String nota2= num2.nextLine();
+        Scanner num3 = new Scanner (System.in);
+        String nota3 = num3.nextLine();
+        Scanner num4 = new Scanner (System.in);
+        String nota4 = num4.nextLine();
+       
+        int n1 = Integer.parseInt(nota1);
+        int n2 = Integer.parseInt(nota2);
+        int n3 = Integer.parseInt(nota3);
+        int n4 = Integer.parseInt(nota4);
+        int promedio = ((n1+n2+n3+n4)/4);
+        
+        listadoNotas[fila][0] = fila + 1;
+        listadoNotas[fila][1] = n1;
+        listadoNotas[fila][2] = n2;
+        listadoNotas[fila][3] = n3;
+        listadoNotas[fila][4] = n4;
+        listadoNotas[fila][5] = promedio;
+        
+    }
+
+
+   }
