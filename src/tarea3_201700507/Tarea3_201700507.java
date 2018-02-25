@@ -5,6 +5,8 @@
  */
 package tarea3_201700507;
 
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -31,10 +33,10 @@ public class Tarea3_201700507 {
         System.out.println("4. Calcular promedio");
         System.out.println("5. Salir");
         
-        
+        try {
         Scanner teclado = new Scanner (System.in);
             int menu = teclado.nextInt();
-            
+                    
             switch (menu) {
                 case 1: boolean usuario = true;
                         String [] listausuario = new String [5];
@@ -46,48 +48,29 @@ public class Tarea3_201700507 {
                         
                         Scanner teclado1 = new Scanner (System.in);
                         int menuusuario = teclado1.nextInt();
-                        
-                        
-                        
+                       
                         switch (menuusuario) {
-                              
-                            case 1: System.out.println("Ingresar Usuario 1");
-                                    Scanner usuario1scann = new Scanner (System.in);
-                                    String usuario1 = usuario1scann.nextLine();
-                                    listausuario[0] = usuario1;
-                                    System.out.println("Ingresar Usuario 2");
-                                    Scanner usuario2scann = new Scanner (System.in);
-                                    String usuario2 = usuario2scann.nextLine();
-                                    listausuario[1] = usuario2;
-                                    System.out.println("Ingresar Usuario 3");
-                                    Scanner usuario3scann = new Scanner (System.in);
-                                    String usuario3 = usuario3scann.nextLine();
-                                    listausuario[2] = usuario3;
-                                    System.out.println("Ingresar Usuario 4");
-                                    Scanner usuario4scann = new Scanner (System.in);
-                                    String usuario4 = usuario4scann.nextLine();
-                                    listausuario[3] = usuario4;
-                                    System.out.println("Ingresar Usuario 5");
-                                    Scanner usuario5scann = new Scanner (System.in);
-                                    String usuario5 = usuario5scann.nextLine();
-                                    listausuario[4] = usuario5;
+                            case 1:
+                                
+                                
+                                for (int i = 0; i < listausuario.length; i++) {
+                                    Tarea3_201700507.ingresarUsuario(listausuario, i);
+                                }
                                     break;
-                        
-                            case 2: System.out.println(listausuario[4]);
-                                    System.out.println(listausuario[3]);
-                                    System.out.println(listausuario[2]);
-                                    System.out.println(listausuario[1]);
-                                    System.out.println(listausuario[0]);
+                                                       
+                            case 2: 
+                                    //int posicionFinal = listausuario.length;
+                                    for (int i = listausuario.length -1; i >= 0; i--){
+                                        System.out.println((i + 1)  + ". " +listausuario[i]);
+                            }
                                     break;
                                     
-                            case 3: System.out.println(listausuario[0]);
-                                    System.out.println(listausuario[1]);
-                                    System.out.println(listausuario[2]);
-                                    System.out.println(listausuario[3]);
-                                    System.out.println(listausuario[4]);
+                            case 3: for (int i = 0; i < listausuario.length; i++){
+                                    System.out.println((i + 1) + ". " + listausuario[i]);
+                            }
                                     break;
                                     
-                            case 4: 
+                            case 4: usuario = false;
                                     break;
                                     
                             default: System.out.println("Ingrese un número dentro del listado");
@@ -97,8 +80,20 @@ public class Tarea3_201700507 {
                         while (usuario);
                     break;
                     
-                case 2: System.out.println("Menú Contador");  
+                case 2: 
+                        boolean contador = true;
+                        do {
+                        System.out.println("1. Ingresar Número");
+                        System.out.println("2. Mostrar Número de Dígitos");
+                        System.out.println("4. Menú Principal");
+                        
+                        Scanner teclado2 = new Scanner (System.in);
+                        int menucontador = teclado2.nextInt();
+                        
+                        } while (contador);
+                        
                     break;
+                    
                 case 3: System.out.println("Menú tres");
                     break;
                 case 4: System.out.println("Menu calcular");
@@ -109,8 +104,49 @@ public class Tarea3_201700507 {
                 default: System.out.println("Ingrese un número dentro del listado");
                     break;
             }
+        } catch (InputMismatchException e){
+            System.out.println("Ingrese un número válido");
+        }    
         }
+        
         while (salida);
 
     }
+    
+    
+    public static boolean validarUsuario(String[] listadoUsuarios, String nombreUsuario){
+    
+        for (int i = 0; i < listadoUsuarios.length; i++) {
+            
+            
+            if(listadoUsuarios[i] != null){
+            if(nombreUsuario.compareTo(listadoUsuarios[i])==0){
+                
+                return true;
+            }}
+        }
+        
+        
+        return false;
+    }
+    
+    
+    public static void ingresarUsuario(String[] listadoUsuario, int posicion){
+                                   
+        boolean existe = false;                            
+        do{     
+            System.out.println("Ingresar Usuario " + (posicion + 1));
+        Scanner usuario1scann = new Scanner (System.in);
+        String usuario1 = usuario1scann.nextLine();
+        existe = Tarea3_201700507.validarUsuario(listadoUsuario, usuario1);
+
+        if(!existe)
+            listadoUsuario[posicion] = usuario1;
+        else
+            System.out.println("El usuario ingresado ya existe. Ingrese un nuevo usuario.");
+        
+        } while(existe);      
+    }
+    
+    
 }
