@@ -22,7 +22,7 @@ public class Tarea3_201700507 {
         // TODO code application logic here
         
         boolean salida = true;
-        
+        //
         do {
         System.out.println("[IPC1]Tarea3_201700507");
         System.out.println("");
@@ -123,6 +123,42 @@ public class Tarea3_201700507 {
                             }
                                     break;
                             case 2: 
+                                    if (listaNumeros[0] > listaNumeros[1] && listaNumeros[0] > listaNumeros[2]){
+                                        if (listaNumeros[1] > listaNumeros[2]){
+                                            System.out.println(listaNumeros[0]);
+                                            System.out.println(listaNumeros[1]);
+                                            System.out.println(listaNumeros[2]);
+                                        } else {
+                                            System.out.println(listaNumeros[0]);
+                                            System.out.println(listaNumeros[2]);
+                                            System.out.println(listaNumeros[1]);
+                                        }
+                                    }
+                                    
+                                    if (listaNumeros[1] > listaNumeros[0] && listaNumeros[1] > listaNumeros[2]){
+                                        if (listaNumeros[0] > listaNumeros[2]){
+                                            System.out.println(listaNumeros[1]);
+                                            System.out.println(listaNumeros[0]);
+                                            System.out.println(listaNumeros[2]);
+                                        } else {
+                                            System.out.println(listaNumeros[1]);
+                                            System.out.println(listaNumeros[2]);
+                                            System.out.println(listaNumeros[0]);
+                                        }
+                                    }
+                                    
+                                    if (listaNumeros[2] > listaNumeros[0] && listaNumeros[2] > listaNumeros[1]){
+                                        if (listaNumeros[0] > listaNumeros[1]){
+                                            System.out.println(listaNumeros[2]);
+                                            System.out.println(listaNumeros[0]);
+                                            System.out.println(listaNumeros[1]);
+                                        } else {
+                                            System.out.println(listaNumeros[2]);
+                                            System.out.println(listaNumeros[1]);
+                                            System.out.println(listaNumeros[0]);
+                                        }
+                                    }
+                                    
                                     break;
                             case 4: ordenar = false;
                                     break;
@@ -155,6 +191,7 @@ public class Tarea3_201700507 {
                                     
                                     break;
                             case 2: for(fila = 0; fila<listaNotas.length; fila++){
+
                                         for(columna = 0; columna<listaNotas.length; columna++){
                                             System.out.print("\t"+listaNotas[fila][columna]+" ");
                                         }
@@ -240,6 +277,9 @@ public class Tarea3_201700507 {
      */
     public static void ingresarNotas (int [][] listadoNotas, int fila){
         
+        System.out.println("Ingresar ID del alumno");
+        Scanner identificador = new Scanner (System.in);
+        String identif = identificador.nextLine();
         System.out.println("Ingresar notas de alumno " + (fila+1));
         Scanner num1 = new Scanner (System.in);
         String nota1 = num1.nextLine();
@@ -250,13 +290,14 @@ public class Tarea3_201700507 {
         Scanner num4 = new Scanner (System.in);
         String nota4 = num4.nextLine();
        
+        int id = Integer.parseInt(identif);
         int n1 = Integer.parseInt(nota1);
         int n2 = Integer.parseInt(nota2);
         int n3 = Integer.parseInt(nota3);
         int n4 = Integer.parseInt(nota4);
         int promedio = ((n1+n2+n3+n4)/4);
         
-        listadoNotas[fila][0] = fila + 1;
+        listadoNotas[fila][0] = id;
         listadoNotas[fila][1] = n1;
         listadoNotas[fila][2] = n2;
         listadoNotas[fila][3] = n3;
